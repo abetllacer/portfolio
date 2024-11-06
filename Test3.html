@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Portfolio</title>
+    
+    <!-- Google Fonts: Lexend Deca -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: transparent !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #000;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            z-index: 3;
+            width: 250px;
+        }
+
+        .sidebar .site-title {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .sidebar .site-title a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-link {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: #ffc107; /* Menu title color set to #ffc107 */
+            margin-bottom: 15px;
+        }
+
+        /* Video Thumbnails */
+        .thumbnail {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            opacity: 1;
+            width: 100%;
+            box-shadow: none;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+            z-index: 3;
+        }
+
+        .card {
+            background-color: transparent;
+            border: none;
+        }
+
+        /* Modal */
+        .modal-content {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .modal-header {
+            border-bottom: none;
+            justify-content: flex-end;
+        }
+
+        .modal-dialog-centered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive Grid */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .col-md-4 {
+            padding: 10px;
+            flex: 0 0 33.33%; /* Default 3 items per row */
+        }
+
+        /* Mobile and Tablet Responsive */
+        @media (max-width: 768px) {
+            .col-md-4 {
+                flex: 0 0 50%; /* 2 items per row on tablet */
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .col-md-4 {
+                flex: 0 0 100%; /* 1 item per row on mobile */
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .thumbnail {
+                max-width: 90%; /* Make thumbnails smaller */
+            }
+        }
+
+        /* Remove padding for menu when collapsed */
+        .navbar-collapse {
+            padding-left: 0 !important;
+        }
+
+        /* Main Content */
+        .content {
+            padding-left: 250px;
+            transition: padding-left 0.3s ease;
+        }
+
+        /* Remove padding when menu is collapsed */
+        @media (max-width: 991px) {
+            .content {
+                padding-left: 0;
+            }
+        }
+
+        /* Title Styling */
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: left; /* Title aligned left */
+            margin-bottom: 40px;
+        }
+
+        /* Adjust title padding for smaller screen sizes */
+        @media (max-width: 576px) {
+            .title {
+                padding-left: 15px; /* Same padding as the thumbnails */
+                padding-right: 15px; /* Same padding as the thumbnails */
+            }
+        }
+
+        /* Card title styling */
+        .card-body .card-title {
+            text-align: center; /* Centering the title */
+            font-size: 1.2rem;  /* Make the title a little bigger */
+            font-weight: bold; /* Make the title bold */
+            padding-left: 10px; /* Add some padding for better spacing */
+        }
+
+        /* Additional smaller subtitle */
+        .card-body .card-subtitle {
+            text-align: center; /* Centered subtitle */
+            font-size: 0.8rem;
+            color: #ffc107; /* Set subtitle color to match menu color */
+            margin-bottom: 5px; /* Add space below subtitle */
+        }
+
+        /* Video Modal */
+        .modal-body iframe {
+            width: 660px;
+            height: 415px;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark d-block d-lg-none">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#films">Films</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#stills">Stills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#info">Info</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar (for larger screens) -->
+    <div class="sidebar d-none d-lg-block">
+        <h1 class="site-title"><a href="">s.mulvey</a></h1> <!-- Site title now clickable -->
+        <nav class="nav flex-column">
+            <a class="nav-link" href="#films">Films</a>
+            <a class="nav-link" href="#stills">Stills</a>
+            <a class="nav-link" href="#info">Info</a>
+            <a class="nav-link" href="#contact">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Main Content (Video Grid) -->
+    <div class="container my-5 content">
+        <h2 class="title">EDITED WORKS</h2> <!-- Left-aligned title for the videos -->
+
+        <div class="row">
+            <!-- Video 1: sJOA3wqteys -->
+            <div class="col-md-4 mb-4 thumbnail" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/sJOA3wqteys">
+                <div class="card">
+                    <img src="https://img.youtube.com/vi/sJOA3wqteys/hqdefault.jpg" class="card-img" alt="Video 1">
+                    <div class="card-body">
+                        <h6 class="card-subtitle">WEDDING HIGHLIGHTS</h6>
+                        <h5 class="card-title">Video 1</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 2: y79DlX8g-CU -->
+            <div class="col-md-4 mb-4 thumbnail" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/y79DlX8g-CU">
+                <div class="card">
+                    <img src="https://img.youtube.com/vi/y79DlX8g-CU/hqdefault.jpg" class="card-img" alt="Video 2">
+                    <div class="card-body">
+                        <h6 class="card-subtitle">WEDDING HIGHLIGHTS</h6>
+                        <h5 class="card-title">Video 2</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 3: SBgL8PkrR4A -->
+            <div class="col-md-4 mb-4 thumbnail" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/SBgL8PkrR4A">
+                <div class="card">
+                    <img src="https://img.youtube.com/vi/SBgL8PkrR4A/hqdefault.jpg" class="card-img" alt="Video 3">
+                    <div class="card-body">
+                        <h6 class="card-subtitle">WEDDING HIGHLIGHTS</h6>
+                        <h5 class="card-title">Video 3</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 4: YXz5u5_1o5I -->
+            <div class="col-md-4 mb-4 thumbnail" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/YXz5u5_1o5I">
+                <div class="card">
+                    <img src="https://img.youtube.com/vi/YXz5u5_1o5I/hqdefault.jpg" class="card-img" alt="Video 4">
+                    <div class="card-body">
+                        <h6 class="card-subtitle">WEDDING HIGHLIGHTS</h6>
+                        <h5 class="card-title">Video 4</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 5: o0qLJKQPA34 -->
+            <div class="col-md-4 mb-4 thumbnail" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/o0qLJKQPA34">
+                <div class="card">
+                    <img src="https://img.youtube.com/vi/o0qLJKQPA34/hqdefault.jpg" class="card-img" alt="Video 5">
+                    <div class="card-body">
+                        <h6 class="card-subtitle">WEDDING HIGHLIGHTS</h6>
+                        <h5 class="card-title">Video 5</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 6: VuvjWjUSJOo -->
+            <div class="col-md-4 mb-4 thumbnail" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/VuvjWjUSJOo">
+                <div class="card">
+                    <img src="https://img.youtube.com/vi/VuvjWjUSJOo/hqdefault.jpg" class="card-img" alt="Video 6">
+                    <div class="card-body">
+                        <h6 class="card-subtitle">WEDDING HIGHLIGHTS</h6>
+                        <h5 class="card-title">Video 6</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 7: mvZZ2XWydPo -->
+            <div class="col-md-4 mb-4 thumbnail" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/mvZZ2XWydPo">
+                <div class="card">
+                    <img src="https://img.youtube.com/vi/mvZZ2XWydPo/hqdefault.jpg" class="card-img" alt="Video 7">
+                    <div class="card-body">
+                        <h6 class="card-subtitle">WEDDING HIGHLIGHTS</h6>
+                        <h5 class="card-title">Video 7</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 8: wZJGG2sVCRI -->
+            <div class="col-md-4 mb-4 thumbnail" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/wZJGG2sVCRI">
+                <div class="card">
+                    <img src="https://img.youtube.com/vi/wZJGG2sVCRI/hqdefault.jpg" class="card-img" alt="Video 8">
+                    <div class="card-body">
+                        <h6 class="card-subtitle">WEDDING HIGHLIGHTS</h6>
+                        <h5 class="card-title">Video 8</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle video modal click
+        $('#videoModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var videoSrc = button.data('video'); // Extract info from data-* attributes
+            var modal = $(this);
+            modal.find('#videoPlayer').attr('src', videoSrc);
+        });
+
+        // Stop video when modal is closed
+        $('#videoModal').on('hidden.bs.modal', function () {
+            var modal = $(this);
+            modal.find('#videoPlayer').attr('src', '');
+        });
+    </script>
+</body>
+</html>
