@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    
+    <!-- Google Fonts: Lexend Deca -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: transparent !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #000;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            z-index: 3;
+            width: 250px;
+        }
+
+        .sidebar .site-title {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .sidebar .site-title a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-link {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        /* Main Content */
+        .content {
+            padding-left: 250px;
+            transition: padding-left 0.3s ease;
+            padding-top: 100px;
+        }
+
+        /* Mobile Logo */
+        .mobile-logo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+        }
+
+        @media (max-width: 991px) {
+            .content {
+                padding-left: 0;
+                padding-top: 100px;
+            }
+            .mobile-logo {
+                display: block;
+                width: 40px;
+                height: auto;
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffc107;
+            margin-bottom: 30px;
+        }
+
+        .contact-section p {
+            font-size: 1.2rem;
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            font-size: 2.5rem;
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark d-block d-lg-none">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutme.html">About Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-none d-lg-block">
+        <h1 class="site-title"><a href="index.html">ABET LLACER</a></h1>
+        <nav class="nav flex-column">
+            <a class="nav-link" href="index.html">Portfolio</a>
+            <a class="nav-link" href="aboutme.html">About Me</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Main Content (Contact Me Section) -->
+    <div class="container my-5 content">
+
+        <div class="contact-section">
+            <h2>Contact Me</h2>
+            <p>If you'd like to get in touch, feel free to reach out through any of my social media accounts below. I look forward to connecting with you!</p>
+
+            <!-- Social Icons -->
+            <div class="social-icons">
+                <a href="https://www.facebook.com/abetllacer" target="_blank" title="Facebook"><i class="fab fa-facebook-square"></i></a>
+                <a href="mailto:abetllacer@gmail.com" target="_blank" title="Gmail"><i class="fab fa-google"></i></a>
+                <a href="https://www.instagram.com/abetllacer" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Logo -->
+    <a href="https://your-link-here.com">
+        <img src="https://img.freepik.com/free-psd/instagram-application-logo_23-2151544102.jpg" alt="Logo" class="mobile-logo">
+    </a>
+
+
+</body>
+</html>
