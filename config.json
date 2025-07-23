@@ -1,7 +1,6 @@
 {
   "trial_duration_hours": 72,
   "valid_licenses": [
-    "LWD_KEY_7mooKJPhuu_2025",
     "LWD_KEY_EZL4f0XCaK_2025",
     "LWD_KEY_kAHOaiWbLw_2025",
     "LWD_KEY_ZswM9oVf1u_2025",
@@ -17,5 +16,7 @@
     "LWD_KEY_axLa9mGK5p_2025",
     "LWD_KEY_DYT9DpvCMu_2025"
   ],
-  "blacklisted_keys": []
+  "blacklisted_keys": [
+    "LWD_KEY_7mooKJPhuu_2025"
+  ]
 }
