@@ -16,7 +16,8 @@
     "LWD_KEY_hdYgAbgOta_2025",
     "LWD_KEY_axLa9mGK5p_2025",
     "LWD_KEY_DYT9DpvCMu_2025",
-    "LWD_KEY_OsRU0zMVkO_2025"
   ],
-  "blacklisted_keys": []
+  "blacklisted_keys": [
+    "LWD_KEY_OsRU0zMVkO_2025"
+  ]
 }
