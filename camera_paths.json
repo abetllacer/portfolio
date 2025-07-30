@@ -27,3 +27,4 @@
   {"type": "photo", "brand": "GoPro",       "base": "DCIM", "pattern": "\\d{3}GOPRO"},
   {"type": "photo", "brand": "DJI",         "base": "DCIM", "pattern": "\\d{3}MEDIA"}
 ]
+test only
